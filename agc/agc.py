@@ -173,8 +173,10 @@ def write_OTU(OTU_list: List, output_file: Path) -> None:
     :param OTU_list: (list) A list of OTU sequences
     :param output_file: (Path) Path to the output file
     """
-    pass
-
+    with open(output_file, "w") as fasta:
+        for number, (sequence, count) in enumerate(OTU_list, start=1):
+            fasta.write(f">OTU_{number} occurrence:{count}\n")
+            fasta.write(textwrap.fill(sequence, width=80) + "\n")
 
 #==============================================================
 # Main program
