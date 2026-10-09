@@ -128,7 +128,17 @@ def get_identity(alignment_list: List[str]) -> float:
     :param alignment_list:  (list) A list of aligned sequences in the format ["SE-QUENCE1", "SE-QUENCE2"]
     :return: (float) The rate of identity between the two sequences.
     """
-    pass
+    sequence1 = alignment_list[0]
+    sequence2 = alignment_list[1]
+
+    identical = 0
+
+    for nucleotide1, nucleotide2 in zip(sequence1, sequence2):
+        if nucleotide1 == nucleotide2 and nucleotide1 != "-":
+            identical += 1
+    identity = (identical / len(sequence1)) * 100
+    return identity
+
 
 def abundance_greedy_clustering(amplicon_file: Path, minseqlen: int, mincount: int, chunk_size: int, kmer_size: int) -> List:
     """Compute an abundance greedy clustering regarding sequence count and identity.
