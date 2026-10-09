@@ -187,8 +187,13 @@ def main(): # pragma: no cover
     """
     # Get arguments
     args = get_arguments()
-    # Votre programme ici
+    amplicon_file = args.amplicon_file
+    minseqlen = args.minseqlen
+    mincount = args.mincount
+    output_file = args.output_file
 
+    otu_list = abundance_greedy_clustering(amplicon_file, minseqlen, mincount, 100, 8)
+    write_OTU(otu_list, output_file)
 
 
 if __name__ == '__main__':
