@@ -1,0 +1,9 @@
+name: agc
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.9
+  - numpy=1.23.5
+  - vsearch
+
